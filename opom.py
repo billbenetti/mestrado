@@ -2,7 +2,9 @@
 """
 Created on Sun Sep 11 08:23:31 2016
 
-@author: bill
+Este script realiza a conversão do modelo de função de transferência para o modelo OPOM (Output Prediction Oriented Model)
+
+@author: bruno eduardo benetti (brunobillbenetti@gmail.com)
 """
 
 #Módulos utilizados
