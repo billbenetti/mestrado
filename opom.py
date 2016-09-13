@@ -60,7 +60,7 @@ if (size(d_i)==0):
 A_1 = hstack((array([[1]]),zeros((1,2)),array([[Ts]])))  #primeira linha
 z_1 = zeros((size(d_d),size(d_s)))
 z_2 = zeros((size(d_d),size(d_i)))
-A_2 = hstack((z_1,diag(polos,0),z_2)) #segunda linha
+A_2 = hstack((z_1,diag(exp(Ts/polos),0),z_2)) #segunda linha
 A_3 = hstack((zeros((1,size(d_s))), zeros((1,size(d_d))), array([[1]]))) #terceira linha
 
 
@@ -70,10 +70,16 @@ A = vstack((A_1,A_2,A_3))
 #monta matriz B
 
 B_1 = d_s+d_i
-B_2 = 
-
-
+B_2 = reshape(d_d*exp(Ts/polos),(size(d_d),1))
 B_3 = d_i
+
+B = vstack((B_1,B_2,B_3))
 #monta matriz C
+C = vstack((ones((size(d_d)+1,1)),array(([0]))))
+
+D = array([[0]])
 
 #monta sistema ss
+sys = signal.StateSpace(A, B, C, D)
+
+
